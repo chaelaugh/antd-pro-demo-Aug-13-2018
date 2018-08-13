@@ -2,12 +2,12 @@ import { isUrl } from '../utils/utils';
 
 const menuData = [
   {
-    name: '标的管理',
+    name: 'Aug 13',
     icon: 'dashboard',
     path: 'bidManagement',
     children: [
       {
-        name: '标的列表',
+        name: 'demo',
         path: 'bidList',
       },
     ],
