@@ -33,6 +33,13 @@ export async function addRule(params) {
   });
 }
 
+export async function approval(params) {
+  return request('/api/rule', { // 写你自己的接口  写完整
+    method: 'POST',
+    body: params,
+  });
+}
+
 export async function fakeSubmitForm(params) {
   return request('/api/forms', {
     method: 'POST',

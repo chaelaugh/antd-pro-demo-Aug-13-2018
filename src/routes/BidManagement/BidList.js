@@ -5,20 +5,20 @@ import ButtonArea from '../common/ButtonArea';
 
 const { confirm } = Modal;
 
-@connect(({ chart, loading }) => ({
-  chart,
-  loading: loading.effects['chart/fetch'],
-}))
+@connect()
 export default class BidList extends Component {
   state = {
     ids: [],
   };
 
-  onApproval = (state, type) => {
+  onApproval = (state) => {
     const { ids } = this.state; 
+    const id = ids
+    const { busiType = '', dispatch } = this.props; // 这个是没有的 假的 
+    let busi_type = busiType; // eslint-disable-line
     if (ids.length > 0) {
-        console.log(ids, state, type) // 数据
-        // todo 
+      const data = { id, state, busi_type}
+      dispatch({ type: 'demo/onApproval', payload: { data } })
     } else {
       notification.error({
         message: 'Notification Title',
@@ -27,7 +27,7 @@ export default class BidList extends Component {
     }
   }
 
-  setList = (list) => {
+  setList = (list) => { 
     this.setState({
       ids: list,
     })
@@ -89,10 +89,10 @@ export default class BidList extends Component {
       <Fragment>
         <div style={{ padding: 20 }}>
           <ButtonArea>
-            <Button type="primary" onClick={() => this.onApproval(3, '任务')}>
+            <Button type="primary" onClick={() => this.onApproval(3)}>
               同意
             </Button>
-            <Button type="danger" style={{ marginLeft: 10 }} onClick={() => this.onApproval(4, '容器')}>
+            <Button type="danger" style={{ marginLeft: 10 }} onClick={() => this.onApproval(4)}>
               拒绝
             </Button>
           </ButtonArea>
