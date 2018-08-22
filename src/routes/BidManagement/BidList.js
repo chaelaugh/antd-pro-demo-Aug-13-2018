@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'dva';
-import { Modal, Input, Button } from 'antd';
+import { Input, Button } from 'antd';
+import BidModal from './BidModal';
 
 @connect()
 export default class BidList extends Component {
@@ -28,23 +29,28 @@ export default class BidList extends Component {
     })
   }
 
+  onOk = (value) => {
+    this.setState({
+      visible: false,
+      value,
+    })
+  }
+
   render() {
     const { visible, value } = this.state;
+    const modalProps = {
+      visible,
+      value,
+      onOk: this.onOk,
+      onCancel: this.onCancel,
+    }
     return (
       <Fragment>
         <Button onClick={this.onShow}>Click</Button>
         <div style={{ padding: 20 }}>
           <Input value={value} />
         </div>
-        <Modal
-          title="Basic Modal"
-          visible={visible}
-          onOk={this.handleOk}
-          onCancel={this.onCancel}
-          footer={null}
-        >
-          <Input onBlur={this.onChange} />
-        </Modal>
+        <BidModal {...modalProps} />
       </Fragment>
     );
   }
