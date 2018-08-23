@@ -77,6 +77,9 @@ export const getRouterData = app => {
     '/bidManagement/bidList': {
       component: dynamicWrapper(app, ['demo'], () => import('../routes/BidManagement/BidList')),
     },
+    '/bidManagement/showHidden': {
+      component: dynamicWrapper(app, ['demo'], () => import('../routes/Demo/ShowHidden')),
+    },
     '/bidManagement/bidInfo': {
       component: dynamicWrapper(app, [], () => import('../routes/BidManagement/BidInfo')),
     },

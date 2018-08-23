@@ -10,6 +10,10 @@ const menuData = [
         name: 'demo',
         path: 'bidList',
       },
+      {
+        name: '组件控制',
+        path: 'showHidden',
+      },
     ],
   },
   {
